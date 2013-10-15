@@ -1,5 +1,5 @@
 class ContactMailer < ActionMailer::Base
-  default to: %w(jacob).map { |name| "#{name}@webonlineventures.com" }
+  default to: %w(jacob nick loni).map { |name| "#{name}@webonlineventures.com" }
   default subject: "New lead from the Online Ventures website!"
 
   def send_using lead
