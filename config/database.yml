@@ -1,0 +1,19 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  host: 127.0.0.1 
+  post: 5432
+  database: online_ventures
+  pool: 5
+  username: online_ventures
+  password: ''
+ 
+test:
+  adapter: postgresql
+  encoding: unicode
+  host: 127.0.0.1
+  post: 5432
+  database: online_ventures_test
+  pool: 5
+  username: online_ventures
+  password: ''

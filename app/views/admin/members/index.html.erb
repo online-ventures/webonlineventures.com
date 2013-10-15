@@ -1,0 +1,27 @@
+<h1>The Online Ventures Team</h1>
+
+<%= link_to 'New Member', new_admin_member_path %>
+<table>
+  <thead>
+    <tr>
+	  <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @members.each do |member| %>
+      <tr>
+	  	<td><%= member.name %></td>
+        <td><%= link_to 'Show', admin_member_path(member) %></td>
+        <td><%= link_to 'Edit', edit_admin_member_path(member) %></td>
+        <td><%= link_to 'Destroy', admin_member_path(member), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

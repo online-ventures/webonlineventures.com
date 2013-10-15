@@ -1,0 +1,11 @@
+New Message From <%= @lead['name'].capitalize %>
+=============================================
+
+Name: <%= @lead['name'] %>
+Email: <%= @lead['email'] %>
+Message:
+	<%= @lead['message'] %>
+
+<% if @lead['honeypot'] %>
+Also, I'm a robot.
+<% end %>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Online Ventures: experienced product developers helping businesses reach new heights</title>
+	<link rel="icon" type="image/png" href="http://webonlineventures.com/favicon.png" />
+	<%= csrf_meta_tags %>
+	<%= stylesheet_link_tag "admin", media: "all", "data-turbolinks-track" => true %>
+</head>
+<body>
+	<nav class="top-bar">
+		<ul class="title-area">
+			<li class="name">
+				<h1><a href="/admin/">Online Ventures</a></h1>
+			</li>
+			<li class="toggle-topbar menu-icon">
+				<a href="#"><span>Menu</span></a>
+			</li>
+		</ul>
+
+		<section class="top-bar-section">
+			<ul class="left">
+				<li class="divider"></li>
+				<li class="active"><a href="#">Members</a></li>
+				<li class="divider"></li>
+				<li><a href="#">Pages</a></li>
+			</ul>
+		</section>
+
+		<section class="top-bar-section">
+			<ul class="right">
+				<li class="has-dropdown"><a href="#">Quick Links</a>
+					<ul class="dropdown">
+						<li><a href="https://basecamp.com/2257044/">Basecamp</a></li>
+						<li><a href="https://new.toggl.com/app/">Toggl</a></li>
+						<li><a href="https://gomockingbird.com/mockingbird/">Mockingbird</a></li>
+					</ul>
+				</li>
+				<li class="divider"></li>
+				<li><a href="/admin/logout">Log Out</a></li>
+			</ul>
+		</section>
+	</nav>
+
+	<article id="container">
+		<div class="row">
+			<%= yield %>
+		</div>
+	</article>
+
+	<footer>
+		<div class="row">
+			<small class="large-12 columns">&copy; 2013<%= "- #{Time.now.to_a[6]}" if (Time.now.to_a[6] > 2013) %> Web Online Ventures, LLC</small>
+		</div>
+	</footer>
+	<%= javascript_include_tag "admin", "data-turbolinks-track" => true %>
+</body>
+</html>
