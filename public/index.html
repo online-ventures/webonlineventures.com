@@ -25,7 +25,6 @@
 	}
 	
 	.container {
-		position: relative;
 		z-index: 2;
 		background-color: rgba(255,255,255,0.1);
 	}
@@ -33,18 +32,36 @@
 	.page {
 		display: block;
 		position: relative;
-		margin-left: auto;
-		margin-right: auto;
+		margin: 0 auto 2em;
 		padding: 1.5em;
 		width: 100%;
-		max-width: 32em;
+		max-width: 60em;
 		background-color: rgba(255,255,255,0.8);
 		border-radius: 1em;
 		box-shadow: 1px 1px 0 rgba(0,0,0,0.1);
 	}
+
+	.left-half {
+		vertical-align: top;
+		display: inline-block;
+		width: 49.5%;
+		padding: 1em;
+	}
+	.left-half img {
+		max-width: 50%;
+		margin: 0 auto;
+		display: block;
+	}
+
+	.right-half {
+		display: inline-block;
+		width: 49.5%;
+		padding: 1em;
+	}
 	
 	iframe {
 		z-index: 0;
+		position: fixed;
 	}
 	
 	h1, h2, p {
@@ -142,24 +159,31 @@
 <body>
 	<div class="container">
 		<div class="page">
-			<h1><b>online</b>ventures</h1>
-			<h2>experienced product developers helping businesses reach new heights</h2>
-			<br/>
-			<p>
-				If you would like to reach us, <br/>please use the contact form below
-			</p>
-			<fieldset>
-				<div class="hidden message">
-					<p>Something went wrong.<br>Please try again later.</p>
-				</div>
-				<form action="/contact" method="post">
-					<textarea name="message" watermark="What would you like to tell us?"></textarea>
-					<input type="text" name="first_name" />
-					<input type="text" name="last_name" watermark="Your name"/>
-					<input type="email" name="email" watermark="Your email"/>
-					<input type="submit" value="Talk to Us">
-				</form>
-			</fieldset>
+			<div class="left-half">
+				<img src="http://online-ventures.s3.amazonaws.com/online-ventures-logo.png" alt="Online Ventures: experienced product developers helping business reach new heights"/>
+				<h1><b>online</b>ventures</h1>
+				<h2>experienced product developers helping businesses reach new heights</h2>
+			</div>
+			<div class="right-half">
+				<p>
+					We're working on our new website right now. <br/><br/>
+					
+					If you would like to reach us, <br/>please use the contact form below.
+				</p>
+				<fieldset>
+					<div class="hidden message">
+						<p>Something went wrong.<br>Please try again later.</p>
+					</div>
+					<form action="/contact" method="post">
+						<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+						<textarea name="message" watermark="What would you like to tell us?"></textarea>
+						<input type="text" name="first_name" />
+						<input type="text" name="last_name" watermark="Your name"/>
+						<input type="email" name="email" watermark="Your email"/>
+						<input type="submit" value="Talk to Us">
+					</form>
+				</fieldset>
+			</div>
 		</div>
 	</div>
 	<iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/?ie=UTF8&amp;ll=42.613812,-83.925762&amp;spn=0.040679,0.076132&amp;t=m&amp;z=14&amp;output=embed"></iframe>
@@ -172,7 +196,7 @@
 	$('textarea').autogrow();
 	
 	var center_page = function(){
-		var offset = (($window.height() - $page.outerHeight()) / 4);
+		var offset = (($window.height() - $page.outerHeight()) / 3);
 		$page.css('top', offset > 0 ? offset : 0); 
 	};
 	
@@ -206,11 +230,19 @@
 				email: $('[name="email"]').val(),
 				message: $('[name="message"]').val()
 			},
-			complete: function(data) {
-				console.log(data);
-				display_message(data.status, data.message, data.delay);
+			success: function(data, status, jqXHR) {
+				console.log(data, status, jqXHR);
+				display_message('success', 'We\'ve gotten your message! <br/>Someone on the team will get back to you soon.');
+			},
+			error: function(jqXHR, status, error) {
+				console.log(jqXHR, status, error);
+				display_message('error', status, 4000);
 			}
 		});
+	});
+
+	$('iframe').click(function(e) {
+		e.preventDefault();
 	});
 	</script>
 </body>

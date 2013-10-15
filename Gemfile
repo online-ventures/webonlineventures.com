@@ -10,7 +10,8 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
-gem 'unicorn'
+gem 'unicorn', '4.6.3'
+gem 'kgio', '2.6'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
