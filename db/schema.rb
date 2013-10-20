@@ -15,10 +15,13 @@ ActiveRecord::Schema.define(version: 20131013202702) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
 
   create_table "members", force: true do |t|
     t.string   "name"
-    t.string   "slug"
+    t.string   "email"
+    t.string   "gravatar_email"
+    t.string   "bio"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
