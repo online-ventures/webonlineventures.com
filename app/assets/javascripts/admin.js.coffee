@@ -3,4 +3,4 @@
 #= require turbolinks
 #= require foundation
 
-$(document).foundation
+$(document).foundation()
