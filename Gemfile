@@ -11,7 +11,6 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'unicorn', '4.6.3'
-gem 'kgio', '2.6'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -20,12 +19,5 @@ end
 
 gem 'rails_12factor', group: :production
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
+# Gravatar Management
+gem 'gravtastic'
