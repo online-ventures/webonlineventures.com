@@ -14,8 +14,7 @@
   <tbody>
     <% @members.each do |member| %>
       <tr>
-	  	<td><%= member.name %></td>
-        <td><%= link_to 'Show', admin_member_path(member) %></td>
+	  	<td><%= image_tag member.gravatar_url %><%= link_to member.name, member %></td>
         <td><%= link_to 'Edit', edit_admin_member_path(member) %></td>
         <td><%= link_to 'Destroy', admin_member_path(member), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

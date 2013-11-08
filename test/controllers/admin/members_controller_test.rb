@@ -18,7 +18,7 @@ class Admin::MembersControllerTest < ActionController::TestCase
 
   test "should create member" do
     assert_difference('Member.count') do
-      post :create, member: { name: 'Nick Gronow' }
+      post :create, member: @member
     end
 
     assert_redirected_to admin_member_path(assigns(:member))

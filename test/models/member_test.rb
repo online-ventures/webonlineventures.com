@@ -2,12 +2,19 @@ require 'test_helper'
 
 class MemberTest < ActiveSupport::TestCase
 	def setup
-		@member = members(:jacob)
+		@jacob = members(:jacob)
+		@nick = members(:nick)
 	end
 
-	test "slug is properly created" do
-		member = Member.new({ name: 'Jacob Evan Shreve' })
-		member.save
-		assert_equal 'jacob-evan-shreve', member.slug
+	def teardown
+		@member = nil
+	end
+
+	test "gravatar email and email are different" do
+		assert_not_equal @jacob.email, @jacob.gravatar_email
+	end
+
+	test "gravatar email defaults to email" do
+		assert_equal @nick.email, @nick.gravatar_email
 	end
 end
