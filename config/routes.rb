@@ -1,8 +1,9 @@
 OnlineVentures::Application.routes.draw do
-	get '/admin', to: 'admin#index'
-	post '/contact', to: 'contact#send_message'
-	resources :team, only: [:index, :show]	
-	namespace :admin do
-		resources :members
-	end
+  root to: redirect('http://wov.io')
+  post '/contact', to: 'contact#send_message'
+  # get '/admin', to: 'admin#index'
+  # resources :team, only: [:index, :show]
+  # namespace :admin do
+  #   resources :members
+  # end
 end
